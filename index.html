@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <div ng-app="myApp" ng-controller="appController">
+    <form novalidate class="simple-form" ng-submit="addData()">
+      <label>Name: <input type="text" ng-model="userModel.name" /></label>
+      <label>E-mail: <input type="email" ng-model="userModel.email"/></label>
+      <label>College: <input type = "text" ng-model="userModel.college"/></label>
+      <label>RegNo: <input type = "number" ng-model = "userModel.regNo"/></label>
+      <label>Ip: <input type = "text" value= {{ip}}></label><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <table border="1" style="width: 300px">
+      <thead>
+        <th>name</th>
+        <th>email</th>
+        <th>college</th>
+        <th>regNo</th>
+        <th>ip</th>
+      </thead>
+      <tr data-ng-repeat="user in userList" ng-click="bindSelectedData(user)">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.college}}</td>
+        <td>{{ user.regNo}}</td>
+        <td>{{ip}}</td>
+        <td>
+          <input type="button" value="Delete" ng-click="deleteData(user)" /></td>
+      </tr>
+    </table>
+  </div>
+  <script src="myApp.js"></script>
+  <script src="appController.js"></script>
+  <script src="homeService.js"></script>
+  <script src="apiService.js"></script>
+</body>
+
+</html>
